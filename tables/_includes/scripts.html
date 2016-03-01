@@ -1,0 +1,36 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+  $.fn.shuffleChildren = function() {
+    $.each(this.get(), function(index, el) {
+        var $el = $(el);
+        var $find = $el.children();
+
+        $find.sort(function() {
+            return 0.5 - Math.random();
+        });
+
+        $el.empty();
+        $find.appendTo($el);
+    });
+};
+
+  $.fn.alphabetizeChildren = function() {
+    $.each(this.get(), function(index, el) {
+        var $el = $(el);
+        var $find = $el.children();
+
+        $find.sort(function(a, b) {
+          return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
+        });
+
+        $el.empty();
+        $find.appendTo($el);
+    });
+};
+
+         $(document).ready(function(){
+           $('ul').shuffleChildren();
+         });
+</script>
+</head>
